@@ -1,0 +1,73 @@
+<html>
+   <body>
+      <h3>変換結果</h3>
+      <table cellpadding="2" >
+         <tr>
+            <th>10進数</th>
+            <td align="center">{{ target }}</td>
+         </tr>
+         <tr>
+            <th>2進数</th>
+            <td align="right"><font color="#ff0000">{% for x in range(0, 4)  %} {{ Bin_int8[-x-1] }} {% endfor %}</font></td>
+            <td> </td>
+            <td align="right"><font color="#ff0000">{% for x in range(4, 8)  %} {{ Bin_int8[-x-1] }} {% endfor %}</font></td>
+            <td><font color="#ff0000">.</font></td>
+            <td align="right"><font color="#ff0000">{% for x in range(0, 4)  %} {{ Bin_fra8[x] }} {% endfor %}</font></td>
+            <td> </td>
+            <td align="right"><font color="#ff0000">{% for x in range(4, 8)  %} {{ Bin_fra8[x] }} {% endfor %}</font></td>
+         </tr>
+      </table>
+      <br>
+      <h3>計算過程</h3>
+      <p>整数部, 小数部に分ける</p>
+      <table border="1" cellspacing="0" cellpadding="5" bordercolor="#000000">
+         <tr>
+            <th>10進数</th>
+            <th>整数部</th>
+            <th>小数部</th>
+         </tr>
+         <tr>
+            <td align="center">{{ target }}</td>
+            <td align="center"><font color="#0000ff">{{ Dec_int }}</font></td>
+            <td align="center"><font color="#a400ff">{{ Dec_fra }}</font></td>
+         </tr>
+      </table>
+      <br>
+      <p>整数部の計算</p>
+      <table cellpadding="6">
+         <tr>
+            <th> </th>
+            <th>2で割った</th>
+            <th align="right">商</th>
+            <th align="right">余り</th>
+         </tr>
+         {% for x in range(8) %}
+            <tr>
+               <th>整数部{{x+1}}ケタ目</th>
+               <td align="right"><font color="#0000ff">{{ num_1[x] }}</font> /2 =</td>
+               <td align="right"><font color="#0000ff">{{ num_1[x+1] }}</font></td>
+               <td align="right">… <font color="#ff0000">{{ Bin_int8[x] }}</font></td>
+            </tr>
+         {% endfor %}
+      </table>
+      <br>
+      <p>小数部の計算</p>
+      <table cellpadding="6">
+         <tr>
+            <th> </th>
+            <th>2をかけた後の</th>
+            <th align="center">整数部</th>
+            <th align="center">小数部</th>
+         </tr>
+         {% for x in range(8) %}
+            <tr>
+               <th>小数部{{x+1}}ケタ目</th>
+               <td align="right"><font color="#a400ff">{{ num_2[x] }}</font> *2 =</td>
+               <td align="center"><font color="#ff0000">{{ Bin_fra8[x] }}</font></td>
+               <td align="right">+ <font color="#a400ff">{{ num_2[x+1] }}</font></td>
+            </tr>
+         {% endfor %}
+      </table>
+
+   </body>
+</html>
