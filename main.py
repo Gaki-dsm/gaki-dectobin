@@ -57,6 +57,8 @@ def confirm():
    if request.method == 'POST':
       result = request.form
       target = float(request.form["Dec"])
+      if target < 0 or target > 255 :
+          return render_template("form3.html")
       Dec_int = int(target)
       Dec_fra = round(target - Dec_int, 9)
       Bin_int8 = dectobin(target)[0]    # 固定小数点2進数 整数部8bit
