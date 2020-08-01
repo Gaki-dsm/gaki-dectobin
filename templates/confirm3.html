@@ -1,0 +1,57 @@
+<html>
+   <body>
+      <h3>変換結果</h3>
+      <table cellpadding="2" >
+         <tr>
+            <th>2進数</th>
+            <td align="center">{{ target2 }}</td>
+         </tr>
+         <tr>
+            <th>10進数</th>
+            <td align="center"><font color="#ff0000">{{ Dec_sum }}</font></td>
+         </tr>
+      </table>
+      <form action = "/form2" method = "POST">
+         <p><input type = "submit" value = "別の数字で試す" /></p>
+      </form>
+      <br>
+      <h3>計算過程</h3>
+      <p>各ケタに重みをかけて、合計する</p>
+      <table cellpadding="6">
+         <tr>
+            <th>2進数</th>
+            {% for x in range(8) %}
+               <th align="center"> {{ Bin_list[x] }} </th>
+            {% endfor %}
+            <th align="center"> . </th>
+            {% for x in range(8, 16) %}
+               <th align="center"> {{ Bin_list[x] }} </th>
+            {% endfor %}
+         </tr>
+         <tr>
+            <th><br>各ケタの重み</th>
+            {% for x in range(8) %}
+               <td align="center"><font color="#000"> * <br> {{ 2 **(7-x) }} </font></td>
+            {% endfor %}
+            <td> </td>
+            {% for x in range(8, 16) %}
+               <td align="center"><font color="#000"> * <br> {{ 2 **(7-x) }} </font></td>
+            {% endfor %}
+         </tr>
+         <tr>
+            <th> </th>
+            {% for x in range(8) %}
+               <td align="center"><font color="#a400ff"> {{ Dec_sep[x] }} + </font></td>
+            {% endfor %}
+            <td> </td>
+            {% for x in range(8, 16) %}
+               <td align="center"><font color="#a400ff"> {{ Dec_sep[x] }} + </font></td>
+            {% endfor %}
+         </tr>
+         <tr>
+            <th>合計</th>
+            <th align="center"><font color="#ff0000">{{ Dec_sum }}</font></th>
+         </tr>
+      </table>
+   </body>
+</html>

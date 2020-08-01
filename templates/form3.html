@@ -5,9 +5,25 @@
          <p>範囲は0～255で小数も計算できます。</p>
          <p>2進数は小数8ケタまで計算されます。</p>
          <p>変換したい10進数を入力して下さい。</p>
-         <p><font color="#ff0000">0 ~ 255の範囲で入力してください。</font></p>
+         {% if Error_num == 2 %}
+            <p><font color="#ff0000">0 ~ 255の範囲で入力してください。</font></p>
+         {% endif %}
          <p>10進数 <input type ="text" name = "Dec" /></p>
          <p><input type = "submit" value = "2進数へ変換" /></p>
       </form>
+      <br>
+      <form action = "/confirm3" method = "POST">
+         <p>入力した2進数を10進数に変換します。</p>
+         <p>整数部、小数部、各8ケタまで入力できます。</p>
+         <p>(例: 1011,  10001111.10011001 など)</p>
+         <p>変換したい2進数を入力して下さい。</p>
+         {% if Error_num == 3 %}
+            <p><font color="#ff0000">整数部、小数部、各8ケタまでの2進数を入力してください。</font></p>
+         {% endif %}
+         <p>2進数 <input type ="text" name = "Bin" /></p>
+         <p><input type = "submit" value = "10進数へ変換" /></p>
+      </form>
+      <br>
+      <p>gaki-dectobin ver1.01</p>
    </body>
 </html>
